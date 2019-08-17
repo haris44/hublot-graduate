@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="number" @keyup.left="left" @keyup.right="right" v-model="page" />
+    <Charts />
+    <component v-bind:is="currentPage" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Charts from '@/components/Charts.vue'
+import Intro from '@/components/slides/Intro.vue'
+import Context from '@/components/slides/Context.vue'
 
 export default {
   name: 'app',
+  data(){
+    return { 
+      page : 1,
+      componentPage : [Intro, Context]
+    }
+  },
   components: {
-    HelloWorld
+    Charts,
+    Intro,
+    Context
+  },
+  methods: {
+    left(){
+      this.page = this.page - 1
+    },
+    right(){
+      this.page = this.page + 1
+    }
+  }, 
+  computed : { 
+    currentPage(){
+      return this.componentPage[this.page - 1]
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
