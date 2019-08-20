@@ -1,10 +1,10 @@
 import base from './base'
-import es6 from './es6'
+import knockout from './knockout'
 import commerce from './commerce'
 export default {
   base: base,
   features: [
-    es6,
+    knockout,
     commerce
   ],
   name: 'dev'

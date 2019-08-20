@@ -1,5 +1,6 @@
 import base from './base'
 
 export default {
-  base: base
+  base: base,
+  features: []
 }

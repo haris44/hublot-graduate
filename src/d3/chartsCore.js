@@ -20,7 +20,8 @@ const chartsCore = {
     var svg = d3
       .select(selector)
       .attr("width", options.chartWidth)
-      .attr("height", options.chartHeight);
+      .attr("height", options.chartHeight)
+      .append('g');
 
     const x = d3
       .scaleTime()
@@ -67,7 +68,7 @@ const chartsCore = {
 
     svg.datum(data);
 
-    svg.append('path')
+    return svg.append('path')
       .attr('d', upperInnerArea)
       .attr('class', color)
       .style('opacity', opacity)

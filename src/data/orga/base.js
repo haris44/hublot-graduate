@@ -2,8 +2,13 @@ export default {
   datas: [
     {
       "date": "01/01/2016",
-      "position": 0,
+      "position": 220,
       "size": 0
+    },
+    {
+      "date": "25/01/2016",
+      "position": 450,
+      "size": 10
     },
     {
       "date": "01/03/2016",
@@ -12,12 +17,12 @@ export default {
     },
     {
       "date": "01/06/2016",
-      "position": 200,
+      "position": 300,
       "size": 20
     },
     {
       "date": "01/09/2016",
-      "position": 320,
+      "position": 420,
       "size": 20
     },
     {

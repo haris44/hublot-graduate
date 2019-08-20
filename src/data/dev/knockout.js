@@ -3,7 +3,7 @@ import base from './base'
 export default {
   datas: [
     {
-      "date": "10/01/2016",
+      "date": "12/01/2016",
       "position": 900,
       "size": 0
     },
@@ -14,7 +14,7 @@ export default {
     },
 
   ],
-  text: "ES6",
+  text: "Knockout",
   join: "01/03/2016",
   parent: base
 }

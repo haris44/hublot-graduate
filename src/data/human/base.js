@@ -2,7 +2,7 @@ export default {
   datas: [
     {
       "date": "01/01/2016",
-      "position": 0,
+      "position": 300,
       "size": 0
     },
     {
@@ -12,12 +12,12 @@ export default {
     },
     {
       "date": "01/06/2016",
-      "position": 100,
+      "position": 200,
       "size": 20
     },
     {
       "date": "01/09/2016",
-      "position": 420,
+      "position": 520,
       "size": 25
     },
     {
