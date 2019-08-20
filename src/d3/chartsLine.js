@@ -7,8 +7,8 @@ export default {
       .style("stroke", "grey")
       .style("stroke-width", 2)
       // Scale date with axis
-      .attr("x1", x(moment(date, "DD/MM/YYYY")))
-      .attr("x2", x(moment(date, "DD/MM/YYYY")))
+      .attr("x1", x(moment(date, "DD/MM/YYYY").toDate()))
+      .attr("x2", x(moment(date, "DD/MM/YYYY").toDate()))
       .attr("y1", 0)
       .attr("y2", svgHeight)
       // Make dashed line  

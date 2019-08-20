@@ -1,0 +1,28 @@
+$tech-primary : #376375;
+$tech-1 : #BAD7E2;
+$tech-2: #9EB7C1;
+$tech-3: #1F2D33;
+
+$human-primary: #09BC8A;
+
+// #A4243B ? ROUGE
+// #F2C14E ? JAUNE 
+
+$orga-primary : #D8973C;
+
+@mixin fillStroke($color) {
+  fill:$color;
+  stroke : $color;
+}
+
+.tech-primary { @include fillStroke($tech-primary); }
+.tech-1{ @include fillStroke($tech-1); }
+.tech-2{ @include fillStroke($tech-2); }
+.tech-3{ @include fillStroke($tech-3); }
+
+.human-primary{ @include fillStroke($human-primary); } 
+
+.orga-primary{ @include fillStroke($orga-primary); } 
+
+
+

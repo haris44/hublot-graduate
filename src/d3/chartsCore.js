@@ -1,7 +1,7 @@
 import * as d3 from 'd3v4'
+import dataParser from './dataParser';
 
 const chartsCore = {
-  parseDate: d3.timeParse('%Y-%m-%d'),
   createCharts(selector, options, range) {
     const y = d3
       .scaleLinear()
@@ -45,27 +45,31 @@ const chartsCore = {
         (-margin.left) + ',' + (chartHeight + margin.bottom));
 
   },
-  drawPaths(svg, rawdata, x, y, color = 'red', opacity = 0.6) {
-    var data = rawdata.map(function (d) {
-      return {
-        date: chartsCore.parseDate(d.date),
-        position: d.position,
-        size: d.position + d.size
-      };
-    });
+  drawPaths(svg, rawData, x, y, color = 'red', opacity = 0.6) {
+    const data = dataParser.parseData(rawData)
 
-    var upperInnerArea = d3.area()
+    const upperInnerArea = d3.area()
       .x(function (d) { return x(d.date) || 1; })
       .y0(function (d) { return y(d.size); })
       .y1(function (d) { return y(d.position); })
       .curve(d3.curveMonotoneX)
 
+
+    svg.append("text")
+      .attr("x", () => x(data[0].date))
+      .attr("y", () => y(data[0].size) - 15)
+      .attr("dy", ".35em")
+      .attr('text-anchor', 'middle')
+      .attr('class', "charts-line-title")
+      .text(() => rawData.text || "")
+      .attr('clip-path', 'url(#rect-clip)');
+
+
     svg.datum(data);
 
     svg.append('path')
       .attr('d', upperInnerArea)
-      .style('stroke', color)
-      .style('fill', color)
+      .attr('class', color)
       .style('opacity', opacity)
       .attr('clip-path', 'url(#rect-clip)');
 

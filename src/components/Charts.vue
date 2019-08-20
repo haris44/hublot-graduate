@@ -10,7 +10,9 @@ import LineOneDate from "@/data/lineOneData";
 import secondaryLineData from "@/data/secondaryLineData";
 import chartsCore from "@/d3/chartsCore";
 import chartsLine from "@/d3/chartsLine";
-// import dataParser from "@/d3/dataParser";
+import chartsText from "@/d3/chartsText";
+import chartsPoint from "@/d3/chartsPoint";
+
 import markersData from "@/data/markers";
 
 import * as d3 from "d3v4";
@@ -41,23 +43,27 @@ export default {
 
     const { margin, chartWidth, chartHeight } = this.options;
 
-    // const parsedData = dataParser.parse(LineOneDate);
-    // console.log(parsedData);
-
-    chartsCore.addAxesAndLegend(svg, margin, chartWidth, chartHeight);
-    chartsCore.drawPaths(svg, LineOneDate, x, y, this.color1, 1);
-    chartsCore.drawPaths(svg, secondaryLineData, x, y, this.color1, 0.6);
-
-    chartsLine.createXAxis(svg, this.range, x);
-
     chartsLine.createDashedLine(svg, "01/01/2017", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2018", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2019", x, chartHeight);
 
+    chartsCore.addAxesAndLegend(svg, margin, chartWidth, chartHeight);
+
+    chartsCore.drawPaths(svg, secondaryLineData, x, y, "orga-primary", 1);
+    chartsCore.drawPaths(svg, LineOneDate, x, y, "tech-primary", 1);
+
+    chartsLine.createXAxis(svg, this.range, x);
+
+    chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x);
+    chartsText.createYearsText(svg, "01/01/2017", "31/12/2017", 2017, x);
+    chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x);
+    chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x);
+
+    chartsPoint.createCircle(svg, "01/06/2016", x, "Alpha1");
     chartsCore.startTransitions(chartWidth, svg, this.options);
 
     this.charts = svg;
-    this.pan(1800, 4000);
+    // this.pan(1800, 4000);
   },
   methods: {
     pan(value = 900, duration = 2000) {
@@ -70,8 +76,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+@import "../assets/colours";
 .no-overflow {
   overflow: hidden;
+}
+.charts-line-title {
+  fill: grey;
+  font-family: roboto;
+  font-size: 14pt;
+}
+.charts-year-title {
+  fill: lightgrey;
+  font-family: roboto;
+  font-size: 18pt;
+}
+.charts-point {
+  fill: #3e3e3e;
+  font-family: roboto;
+  font-size: 12pt;
 }
 </style>
