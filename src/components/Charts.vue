@@ -27,8 +27,8 @@ export default {
       ],
       options: {
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
-        chartWidth: 3000,
-        chartHeight: 300
+        chartWidth: 5000,
+        chartHeight: 400
       },
       color1: "#82A3A1",
       charts: {}
@@ -49,21 +49,21 @@ export default {
 
     chartsCore.addAxesAndLegend(svg, margin, chartWidth, chartHeight);
 
-    chartsCore.drawPaths(svg, secondaryLineData, x, y, "orga-primary", 1);
-    chartsCore.drawPaths(svg, LineOneDate, x, y, "tech-primary", 1);
+    chartsCore.drawPaths(svg, secondaryLineData, chartWidth, x, y, "orga-primary", 1);
+    chartsCore.drawPaths(svg, LineOneDate, chartWidth, x, y, "tech-primary", 1);
 
-    chartsLine.createXAxis(svg, this.range, x);
+    chartsLine.createXAxis(svg, this.range, x, chartHeight);
 
     chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x);
     chartsText.createYearsText(svg, "01/01/2017", "31/12/2017", 2017, x);
     chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x);
     chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x);
 
-    chartsPoint.createCircle(svg, "01/06/2016", x, "Alpha1");
+    chartsPoint.createCircle(svg, "01/06/2016", x, chartHeight, "Alpha1");
     chartsCore.startTransitions(chartWidth, svg, this.options);
 
     this.charts = svg;
-    // this.pan(1800, 4000);
+    this.pan(1800, 4000);
   },
   methods: {
     pan(value = 900, duration = 2000) {

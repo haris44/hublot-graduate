@@ -7,58 +7,58 @@ export default {
     },
     {
       "date": "01/06/2016",
-      "position": 1500,
-      "size": 100
+      "position": 650,
+      "size": 10
     },
     {
       "date": "01/12/2016",
-      "position": 300,
+      "position": 150,
       "size": 100
     },
     {
       "date": "01/06/2017",
-      "position": 2000,
-      "size": 250
+      "position": 900,
+      "size": 80
     },
     {
       "date": "01/12/2017",
-      "position": 250,
-      "size": 300
+      "position": 125,
+      "size": 90
     },
     {
       "date": "01/06/2018",
-      "position": 2500,
-      "size": 300
+      "position": 125,
+      "size": 90
     },
     {
       "date": "01/12/2018",
-      "position": 250,
-      "size": 300
+      "position": 125,
+      "size": 90
     },
     {
       "date": "01/01/2019",
-      "position": 2000,
-      "size": 400
+      "position": 900,
+      "size": 100
     },
     {
       "date": "01/02/2019",
-      "position": 100,
-      "size": 400
+      "position": 50,
+      "size": 100
     },
     {
       "date": "01/03/2019",
-      "position": 1600,
-      "size": 500
+      "position": 800,
+      "size": 110
     },
     {
       "date": "01/04/2019",
-      "position": 1200,
-      "size": 500
+      "position": 600,
+      "size": 110
     },
     {
       "date": "01/05/2019",
-      "position": 360,
-      "size": 500
+      "position": 180,
+      "size": 110
     }
   ]
 }

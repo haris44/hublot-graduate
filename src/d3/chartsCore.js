@@ -45,19 +45,19 @@ const chartsCore = {
         (-margin.left) + ',' + (chartHeight + margin.bottom));
 
   },
-  drawPaths(svg, rawData, x, y, color = 'red', opacity = 0.6) {
+  drawPaths(svg, rawData, chartWidth, x, y, color = 'red', opacity = 0.6) {
     const data = dataParser.parseData(rawData)
 
     const upperInnerArea = d3.area()
       .x(function (d) { return x(d.date) || 1; })
-      .y0(function (d) { return y(d.size); })
-      .y1(function (d) { return y(d.position); })
+      .y0(function (d) { return y(d.size / 1000 * chartWidth); })
+      .y1(function (d) { return y(d.position / 1000 * chartWidth); })
       .curve(d3.curveMonotoneX)
 
 
     svg.append("text")
       .attr("x", () => x(data[0].date))
-      .attr("y", () => y(data[0].size) - 15)
+      .attr("y", () => y(data[0].size / 1000 * chartWidth) - 15)
       .attr("dy", ".35em")
       .attr('text-anchor', 'middle')
       .attr('class', "charts-line-title")

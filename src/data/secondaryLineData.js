@@ -4,17 +4,17 @@ export default {
   datas: [
     {
       "date": "20/05/2016",
-      "position": 2500,
+      "position": 800,
       "size": 0
     },
     {
       "date": "02/09/2016",
-      "position": 250,
+      "position": 125,
       "size": 100
     },
     {
       "date": "12/12/2016",
-      "position": 2000,
+      "position": 800,
       "size": 100
     },
   ],

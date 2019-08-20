@@ -14,13 +14,13 @@ export default {
       // Make dashed line  
       .style("stroke-dasharray", "3, 3");
   },
-  createXAxis(svg, range, x) {
+  createXAxis(svg, range, x, svgHeight) {
     svg
       .append("line")
       .style("stroke", "grey")
       .style("stroke-width", 2)
-      .attr("y1", 150)
-      .attr("y2", 150)
+      .attr("y1", svgHeight / 2)
+      .attr("y2", svgHeight / 2)
       .attr("x1", x(range[0]))
       .attr("x2", x(range[1]));
   }
