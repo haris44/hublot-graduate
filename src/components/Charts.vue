@@ -73,7 +73,7 @@ export default {
     chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x);
 
     chartsPoint.createCircle(svg, "01/06/2016", x, chartHeight, "Alpha1");
-    chartsCore.startTransitions(chartWidth, svg, this.options);
+    +chartsCore.startTransitions(chartWidth, svg, this.options);
 
     this.charts = svg;
     // this.pan(1800, 4000);
