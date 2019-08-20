@@ -6,14 +6,16 @@
 </template>
 
 <script>
-import LineOneDate from "@/data/lineOneData";
-import secondaryLineData from "@/data/secondaryLineData";
+
 import chartsCore from "@/d3/chartsCore";
 import chartsLine from "@/d3/chartsLine";
 import chartsText from "@/d3/chartsText";
 import chartsPoint from "@/d3/chartsPoint";
 
-import markersData from "@/data/markers";
+import devLines from "@/data/dev/main";
+import orgaLines from "@/data/orga/main";
+import humanLines from "@/data/human/main";
+
 
 import * as d3 from "d3v4";
 import moment from "moment";
@@ -49,8 +51,19 @@ export default {
 
     chartsCore.addAxesAndLegend(svg, margin, chartWidth, chartHeight);
 
-    chartsCore.drawPaths(svg, secondaryLineData, chartWidth, x, y, "orga-primary", 1);
-    chartsCore.drawPaths(svg, LineOneDate, chartWidth, x, y, "tech-primary", 1);
+
+
+
+    devLines.features.forEach((feature) => {
+      chartsCore.drawPaths(svg, feature, chartWidth, x, y, "tech-1", 0.8);
+    })
+
+    chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1);
+    chartsCore.drawPaths(svg, humanLines.base, chartWidth, x, y, "human-primary", 1);
+    chartsCore.drawPaths(svg, devLines.base, chartWidth, x, y, "tech-primary", 1);
+
+
+
 
     chartsLine.createXAxis(svg, this.range, x, chartHeight);
 
@@ -63,7 +76,7 @@ export default {
     chartsCore.startTransitions(chartWidth, svg, this.options);
 
     this.charts = svg;
-    this.pan(1800, 4000);
+    // this.pan(1800, 4000);
   },
   methods: {
     pan(value = 900, duration = 2000) {
