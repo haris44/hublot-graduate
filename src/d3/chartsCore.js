@@ -30,23 +30,8 @@ const chartsCore = {
 
     return { x, y, svg }
   },
-  addAxesAndLegend(svg, margin, chartWidth, chartHeight) {
-    var legendWidth = 200,
-      legendHeight = 100;
 
-    // clipping to make sure nothing appears behind legend
-    svg.append('clipPath')
-      .attr('id', 'axes-clip')
-      .append('polygon')
-      .attr('points', (-margin.left) + ',' + (-margin.top) + ' ' +
-        (chartWidth - legendWidth - 1) + ',' + (-margin.top) + ' ' +
-        (chartWidth - legendWidth - 1) + ',' + legendHeight + ' ' +
-        (chartWidth + margin.right) + ',' + legendHeight + ' ' +
-        (chartWidth + margin.right) + ',' + (chartHeight + margin.bottom) + ' ' +
-        (-margin.left) + ',' + (chartHeight + margin.bottom));
-
-  },
-  drawPaths(svg, rawData, chartWidth, x, y, color = 'red', opacity = 0.6) {
+  drawPaths(svg, rawData, chartWidth, x, y, color = 'red', opacity = 0.6, fn) {
     const data = dataParser.parseData(rawData)
 
     const upperInnerArea = d3.area()
@@ -65,13 +50,13 @@ const chartsCore = {
       .text(() => rawData.text || "")
       .attr('clip-path', 'url(#rect-clip)');
 
-
     svg.datum(data);
 
     return svg.append('path')
       .attr('d', upperInnerArea)
       .attr('class', color)
       .style('opacity', opacity)
+      .on('click', fn)
       .attr('clip-path', 'url(#rect-clip)');
 
   },
@@ -112,18 +97,6 @@ const chartsCore = {
       .attr('x', radius)
       .attr('y', radius * 1.5)
       .text(marker.version);
-  },
-  startTransitions(chartWidth, svg, options) {
-    var rectClip = svg
-      .append("clipPath")
-      .attr("id", "rect-clip")
-      .append("rect")
-      .attr("width", 0)
-      .attr("height", options.chartHeight);
-
-    rectClip.transition()
-      .duration(4000)
-      .attr('width', chartWidth);
   }
 }
 export default chartsCore

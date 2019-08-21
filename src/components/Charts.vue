@@ -1,7 +1,5 @@
 <template>
   <div class="no-overflow">
-    <button @click="dev">Dev Only</button>
-    <button @click="orga">Orga Only</button>
     <svg id="charts"></svg>
   </div>
 </template>
@@ -18,8 +16,6 @@ import devLines from "@/data/dev/main";
 import orgaLines from "@/data/orga/main";
 import humanLines from "@/data/human/main";
 
-
-import * as d3 from "d3v4";
 import moment from "moment";
 
 export default {
@@ -46,78 +42,60 @@ export default {
       this.range
     );
 
-    const { margin, chartWidth, chartHeight } = this.options;
+    const { chartWidth, chartHeight } = this.options;
 
     chartsLine.createDashedLine(svg, "01/01/2017", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2018", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2019", x, chartHeight);
 
-    chartsCore.addAxesAndLegend(svg, margin, chartWidth, chartHeight);
-
-
     chartsLine.createXAxis(svg, this.range, x, chartHeight);
 
     const devFeatures = devLines.features.map((feature) => {
-      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, "tech-1", 0.8);
+      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, "tech-1", 0.8, this.dev);
     })
 
     const orgaFeatures = orgaLines.features.map((feature) => {
-      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8);
+      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8, this.orga);
     })
 
     const humanFeatures = humanLines.features.map((feature) => {
-      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8);
+      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8, this.human);
     })
 
-    const orga = chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1);
-    const human = chartsCore.drawPaths(svg, humanLines.base, chartWidth, x, y, "human-primary", 1);
-    const dev = chartsCore.drawPaths(svg, devLines.base, chartWidth, x, y, "tech-primary", 1);
+    const orga = chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1, this.orga);
+    const human = chartsCore.drawPaths(svg, humanLines.base, chartWidth, x, y, "human-primary", 1, this.human);
+    const dev = chartsCore.drawPaths(svg, devLines.base, chartWidth, x, y, "tech-primary", 1, this.dev);
 
     this.devs = [...devFeatures, dev]
     this.orgas = [...orgaFeatures, orga]
     this.humans = [...humanFeatures, human]
 
-
-
-    chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x);
-    chartsText.createYearsText(svg, "01/01/2017", "31/12/2017", 2017, x);
-    chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x);
-    chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x);
+    chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x, this.reset);
+    chartsText.createYearsText(svg, "01/01/2017", "31/12/2017", 2017, x, this.reset);
+    chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x, this.reset);
+    chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x, this.reset);
 
     chartsPoint.createCircle(svg, "01/06/2016", x, chartHeight, "Alpha1");
-    chartsCore.startTransitions(chartWidth, svg, this.options);
-
-    const zoomed = () => {
-      const x = Math.max(0, Math.min(-d3.event.transform.x, chartWidth))
-      this.charts
-        .attr("transform", "translate(" + -x + ")");
-    }
-
-    d3
-      .select("#charts").call(d3.zoom()
-        .extent([[0, 0], [chartWidth, chartHeight]])
-        .scaleExtent([1, 8])
-        .on("zoom", zoomed));
-
-
-
-
+    chartsTransition.startTransitions(chartWidth, svg, this.options);
+    chartsTransition.createPan(svg, chartWidth, chartHeight)
     this.charts = svg;
     // this.pan(1800, 4000);
   },
   methods: {
-
     dev() {
       chartsTransition.focus(this.devs, [...this.orgas, ...this.humans])
     },
     orga() {
       chartsTransition.focus(this.orgas, [...this.devs, ...this.humans])
     },
+    human() {
+      chartsTransition.focus(this.humans, [...this.devs, ...this.orgas])
+    },
+    reset() {
+      chartsTransition.focus([...this.devs, ...this.orgas, ...this.humans], [])
+    },
     pan(value = 900, duration = 2000) {
-      this.charts
-        .transition(d3.easeSin)
-        .duration(duration)
-        .attr("transform", "translate(" + -value + ")");
+      chartsTransition.pan(this.charts, value, duration)
     }
   }
 };

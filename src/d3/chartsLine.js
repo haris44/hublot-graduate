@@ -12,7 +12,8 @@ export default {
       .attr("y1", 0)
       .attr("y2", svgHeight)
       // Make dashed line  
-      .style("stroke-dasharray", "3, 3");
+      .style("stroke-dasharray", "3, 3")
+      .attr('clip-path', 'url(#line-clip)')
   },
   createXAxis(svg, range, x, svgHeight) {
     svg
@@ -22,6 +23,8 @@ export default {
       .attr("y1", svgHeight / 2)
       .attr("y2", svgHeight / 2)
       .attr("x1", x(range[0]))
-      .attr("x2", x(range[1]));
+      .attr("x2", x(range[1]))
+      .attr('clip-path', 'url(#line-clip)');
+
   }
 }
