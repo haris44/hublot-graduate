@@ -1,11 +1,11 @@
 <template>
   <div class="center">
-    <div class="animated bounceInDown inline-flex">
+    <div class="animated bounceInDown inline-flex-white">
       <img width="100px" src="logo.png" class="logo" />
       Hublot
     </div>
     <br />
-    <span class="animated fadeIn subtitle"> Qui sommes-nous ?</span>
+    <span class="animated fadeIn subtitle-light"> Qui sommes-nous ?</span>
     <br />
     <div class="inline">
       <span class="keynumber">
@@ -64,71 +64,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/animate";
-.none {
-  display: none;
-}
-.show {
-  display: inline-block;
-}
-.inline {
-  display: flex;
-}
-.keynumber {
-  width: 21%;
-  margin-left: 2%;
-  margin-right: 2%;
-  flex-direction: column;
-  margin-top: 7%;
-  display: flex;
-  .key {
-    color: white;
-    font-size: 60px;
-    font-weight: 600;
-  }
-  .title {
-    font-weight: 200;
-    font-size: 20px;
-    color: lightgray;
-  }
-}
-.logo {
-  margin-right: 20px;
-}
-.objectif {
-  display: inline-flex;
-  align-items: center;
-  color: greenyellow;
-  font-size: 30px;
-  margin-top: 10%;
-  line-height: 30px;
-  font-weight: 400;
-}
-.subtitle {
-  display: inline-flex;
-  align-items: center;
-  color: lightgray;
-  font-size: 30px;
-  margin-top: 25px;
-  line-height: 30px;
-  font-weight: 200;
-}
-.inline-flex {
-  display: inline-flex;
-  align-items: center;
-  color: white;
-  font-family: "Paytone One", sans-serif;
-  font-size: 100px;
-  line-height: 40px;
-  font-weight: 600;
-}
-
-.center {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 50px;
-  text-align: center;
-  font-weight: 300;
-}
+@import "../../assets/slides";
 </style>
-

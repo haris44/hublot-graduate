@@ -11,6 +11,9 @@ import Charts from "@/components/Charts.vue";
 import Intro from "@/components/slides/Intro.vue";
 import Context from "@/components/slides/Context.vue";
 import Company from "@/components/slides/Company.vue";
+import Product from '@/components/slides/Product.vue'
+import Target from '@/components/slides/Target.vue'
+import Summary from '@/components/slides/Summary.vue'
 
 export default {
   name: "app",
@@ -28,6 +31,24 @@ export default {
           component: Company,
           charts: false,
           internalPage: 2,
+          background: "background-primary"
+        },
+        {
+          component: Product,
+          charts: false,
+          internalPage: 12,
+          background: "background-white"
+        },
+        {
+          component: Target,
+          charts: false,
+          internalPage: 4,
+          background: "background-white"
+        },
+        {
+          component: Summary,
+          charts: false,
+          internalPage: 1,
           background: "background-primary"
         },
         {
