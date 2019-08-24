@@ -48,7 +48,7 @@ export default {
         {
           component: Summary,
           charts: false,
-          internalPage: 1,
+          internalPage: 4,
           background: "background-primary"
         },
         {

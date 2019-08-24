@@ -58,6 +58,7 @@ color: white;
 .subtitle-primary,
 .inline-flex-primary {
   color:#376375;
+  transition: all 0.5s;
 }
 
 .inline-flex-white,
@@ -68,7 +69,9 @@ color: white;
   font-size: 100px;
   line-height: 40px;
   font-weight: 600;
+  transition: all 0.5s;
 }
+
 
 .center {
   width: 90%;
