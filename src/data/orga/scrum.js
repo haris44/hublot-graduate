@@ -4,13 +4,13 @@ export default {
   datas: [
     {
       "date": "04/12/2018",
-      "position": 880,
+      "position": 870,
       "size": 0
     },
     {
       "date": "04/01/2019",
       "position": 500,
-      "size": 20
+      "size": 60
     },
 
 

@@ -17,9 +17,10 @@ export default {
         .style("stroke", null)
     })
   },
-  pan(charts, value, duration) {
+  pan(charts, value, duration, delay) {
     charts
       .transition(d3.easeSin)
+      .delay(delay)
       .duration(duration)
       .attr("transform", "translate(" + -value + ")");
   },

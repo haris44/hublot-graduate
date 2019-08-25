@@ -32,48 +32,60 @@ export default {
     },
     {
       "date": "01/06/2017",
-      "position": 900,
-      "size": 20
+      "position": 680,
+      "size": 30
+    },
+    {
+      "date": "01/09/2017",
+      "position": 300,
+      "size": 40
     },
     {
       "date": "01/12/2017",
-      "position": 125,
-      "size": 90
+      "position": 600,
+      "size": 50
+    },
+    {
+      "date": "15/03/2018",
+      "position": 200,
+      "size": 70
     },
     {
       "date": "01/06/2018",
-      "position": 125,
-      "size": 90
+      "position": 400,
+      "size": 70
+    },
+    {
+      "date": "01/09/2018",
+      "position": 250,
+      "size": 100
+    },
+    {
+      "date": "01/10/2018",
+      "position": 350,
+      "size": 110
     },
     {
       "date": "01/12/2018",
-      "position": 125,
-      "size": 90
-    },
-    {
-      "date": "01/01/2019",
-      "position": 900,
-      "size": 100
-    },
-    {
-      "date": "01/02/2019",
-      "position": 50,
-      "size": 100
-    },
-    {
-      "date": "01/03/2019",
-      "position": 800,
-      "size": 110
-    },
-    {
-      "date": "01/04/2019",
       "position": 600,
       "size": 110
     },
+
     {
-      "date": "01/05/2019",
-      "position": 180,
-      "size": 110
+      "date": "01/02/2019",
+      "position": 200,
+      "size": 140
+    },
+
+    {
+      "date": "01/04/2019",
+      "position": 450,
+      "size": 140
+    },
+    {
+      "date": "01/09/2019",
+      "position": 20,
+      "size": 140
     }
   ]
 }

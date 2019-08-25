@@ -10,11 +10,11 @@ export default {
     {
       "date": "14/02/2018",
       "position": 500,
-      "size": 20
+      "size": 50
     },
 
   ],
   text: "Hélène",
-  join: "01/04/2018",
+  join: "01/03/2018",
   parent: base
 }

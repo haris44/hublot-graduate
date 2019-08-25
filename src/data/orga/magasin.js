@@ -3,19 +3,19 @@ import base from './base'
 export default {
   datas: [
     {
-      "date": "04/12/2018",
-      "position": 880,
+      "date": "21/01/2019",
+      "position": 860,
       "size": 0
     },
     {
-      "date": "04/01/2019",
+      "date": "04/02/2019",
       "position": 500,
       "size": 20
     },
 
 
   ],
-  text: "1er magasin",
+  text: "Magasin test",
   join: "01/02/2019",
   parent: base,
   color: 'orga-1'

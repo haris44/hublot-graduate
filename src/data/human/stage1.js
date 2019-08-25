@@ -4,7 +4,7 @@ export default {
   datas: [
     {
       "date": "15/12/2018",
-      "position": 900,
+      "position": 930,
       "size": 0
     },
     {

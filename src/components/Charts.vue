@@ -1,5 +1,6 @@
 <template>
   <div class="no-overflow">
+    <br />
     <svg id="charts"></svg>
   </div>
 </template>
@@ -28,12 +29,31 @@ export default {
       options: {
         margin: { top: 0, right: 0, bottom: 0, left: 0 },
         chartWidth: 5000,
-        chartHeight: 400
+        chartHeight: 500
       },
       charts: {},
       devs: [],
       orgas: []
     };
+  },
+  props: ['selected', 'panning'],
+  watch: {
+    selected() {
+      if (this.selected === 'dev') {
+        this.dev()
+      }
+      else if (this.selected === 'orga') {
+        this.orga()
+      }
+      else if (this.selected === 'human') {
+        this.human()
+      } else {
+        this.reset()
+      }
+    },
+    panning() {
+      this.pan(this.panning, 200, 0)
+    }
   },
   mounted() {
     const { svg, x, y } = chartsCore.createCharts(
@@ -48,7 +68,7 @@ export default {
     chartsLine.createDashedLine(svg, "01/01/2018", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2019", x, chartHeight);
 
-    chartsLine.createXAxis(svg, this.range, x, chartHeight);
+
 
     const devFeatures = devLines.features.map((feature) => {
       return chartsCore.drawPaths(svg, feature, chartWidth, x, y, "tech-1", 0.8, this.dev);
@@ -70,6 +90,7 @@ export default {
     this.orgas = [...orgaFeatures, orga]
     this.humans = [...humanFeatures, human]
 
+    chartsLine.createXAxis(svg, this.range, x, chartHeight);
     chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x, this.reset);
     chartsText.createYearsText(svg, "01/01/2017", "31/12/2017", 2017, x, this.reset);
     chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x, this.reset);
@@ -79,11 +100,11 @@ export default {
       chartsPoint.createCircle(svg, marker.date, x, chartHeight, marker.text);
     })
 
-    //  chartsTransition.startTransitions(chartWidth, svg, this.options);
+    chartsTransition.startTransitions(chartWidth, svg, this.options);
     chartsTransition.createPan(svg, chartWidth, chartHeight)
     this.charts = svg;
-    this.pan(1000, 0);
-    //this.pan(3200, 4000);
+    // this.pan(2900, 0);
+    this.pan(3050, 4000);
   },
   methods: {
     dev() {
@@ -98,8 +119,8 @@ export default {
     reset() {
       chartsTransition.focus([...this.devs, ...this.orgas, ...this.humans], [])
     },
-    pan(value = 900, duration = 2000) {
-      chartsTransition.pan(this.charts, value, duration)
+    pan(value = 900, duration = 2000, delay = 200) {
+      chartsTransition.pan(this.charts, value, duration, delay)
     }
   }
 };

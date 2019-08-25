@@ -9,12 +9,17 @@ export default {
     },
     {
       "date": "15/07/2018",
-      "position": 500,
+      "position": 350,
       "size": 20
+    },
+    {
+      "date": "12/08/2018",
+      "position": 600,
+      "size": 40
     },
 
   ],
-  text: "Stage - Hublot",
-  join: "15/08/2018",
+  text: "Stage - Site web",
+  join: "01/09/2018",
   parent: base
 }

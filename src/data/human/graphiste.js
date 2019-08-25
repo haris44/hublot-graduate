@@ -9,10 +9,14 @@ export default {
     },
     {
       "date": "12/07/2018",
-      "position": 500,
-      "size": 20
+      "position": 300,
+      "size": 50
     },
-
+    {
+      "date": "12/08/2018",
+      "position": 600,
+      "size": 60
+    },
   ],
   text: "Graphiste",
   join: "01/09/2018",
