@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="currentPage.background">
-    <Charts v-if="currentPage.charts" />
+    <Charts :selected="currentPage.selected" v-if="currentPage.charts" />
     <!-- <button @click="fullscreen">Fullscreen</button> -->
     <component :internal="internal" v-bind:is="currentPage.component" />
   </div>
@@ -14,6 +14,10 @@ import Company from "@/components/slides/Company.vue";
 import Product from '@/components/slides/Product.vue'
 import Target from '@/components/slides/Target.vue'
 import Summary from '@/components/slides/Summary.vue'
+import Human from '@/components/slides/Human.vue'
+import Dev from '@/components/slides/Dev.vue'
+import Orga from '@/components/slides/Orga.vue'
+import Conclusion from '@/components/slides/Conclusion.vue'
 
 export default {
   name: "app",
@@ -53,8 +57,36 @@ export default {
         },
         {
           charts: true,
-          internalPage: 3,
+          internalPage: 1,
           component: Context,
+          background: "background-white"
+        }
+        ,
+        {
+          charts: true,
+          internalPage: 1,
+          component: Human,
+          selected: 'human',
+          background: "background-white"
+        }
+        ,
+        {
+          charts: true,
+          internalPage: 1,
+          component: Orga,
+          selected: 'orga',
+          background: "background-white"
+        },
+        {
+          charts: true,
+          internalPage: 1,
+          selected: 'dev',
+          component: Dev,
+          background: "background-white"
+        },
+        {
+          internalPage: 1,
+          component: Conclusion,
           background: "background-white"
         }
       ]
