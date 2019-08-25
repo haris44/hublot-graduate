@@ -15,7 +15,7 @@ import chartsTransition from '@/d3/chartsTransition'
 import devLines from "@/data/dev/main";
 import orgaLines from "@/data/orga/main";
 import humanLines from "@/data/human/main";
-
+import markers from "@/data/markers";
 import moment from "moment";
 
 export default {
@@ -55,11 +55,11 @@ export default {
     })
 
     const orgaFeatures = orgaLines.features.map((feature) => {
-      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8, this.orga);
+      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color || 'orga-1', 0.8, this.orga);
     })
 
     const humanFeatures = humanLines.features.map((feature) => {
-      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color, 0.8, this.human);
+      return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color || "human-1", 0.8, this.human);
     })
 
     const orga = chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1, this.orga);
@@ -75,11 +75,15 @@ export default {
     chartsText.createYearsText(svg, "01/01/2018", "31/12/2018", 2018, x, this.reset);
     chartsText.createYearsText(svg, "01/01/2019", "31/12/2019", 2019, x, this.reset);
 
-    chartsPoint.createCircle(svg, "01/06/2016", x, chartHeight, "Alpha1");
-    chartsTransition.startTransitions(chartWidth, svg, this.options);
+    markers.forEach(marker => {
+      chartsPoint.createCircle(svg, marker.date, x, chartHeight, marker.text);
+    })
+
+    //  chartsTransition.startTransitions(chartWidth, svg, this.options);
     chartsTransition.createPan(svg, chartWidth, chartHeight)
     this.charts = svg;
-    // this.pan(1800, 4000);
+    this.pan(1000, 0);
+    //this.pan(3200, 4000);
   },
   methods: {
     dev() {

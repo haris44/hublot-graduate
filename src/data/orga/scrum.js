@@ -3,20 +3,20 @@ import base from './base'
 export default {
   datas: [
     {
-      "date": "01/04/2016",
+      "date": "04/12/2018",
       "position": 880,
       "size": 0
     },
     {
-      "date": "10/05/2016",
+      "date": "04/01/2019",
       "position": 500,
       "size": 20
     },
 
 
   ],
-  text: "Bitbucket",
-  join: "01/05/2016",
+  text: "Scrum",
+  join: "01/02/2019",
   parent: base,
   color: 'orga-1'
 }
