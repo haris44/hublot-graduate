@@ -18,6 +18,7 @@ import orgaLines from "@/data/orga/main";
 import humanLines from "@/data/human/main";
 import markers from "@/data/markers";
 import moment from "moment";
+import { PanBus } from '@/bus/PanBus';
 
 export default {
   data() {
@@ -54,6 +55,11 @@ export default {
     panning() {
       this.pan(this.panning, 200, 0)
     }
+  },
+  created() {
+    PanBus.$on('pan', pan => {
+      this.pan(pan)
+    });
   },
   mounted() {
     const { svg, x, y } = chartsCore.createCharts(

@@ -64,7 +64,7 @@ export default {
         ,
         {
           charts: true,
-          internalPage: 1,
+          internalPage: 10,
           component: Human,
           selected: 'human',
           background: "background-white"
@@ -72,14 +72,14 @@ export default {
         ,
         {
           charts: true,
-          internalPage: 1,
+          internalPage: 10,
           component: Orga,
           selected: 'orga',
           background: "background-white"
         },
         {
           charts: true,
-          internalPage: 1,
+          internalPage: 10,
           selected: 'dev',
           component: Dev,
           background: "background-white"
