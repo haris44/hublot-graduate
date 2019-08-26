@@ -18,6 +18,7 @@ import Human from '@/components/slides/Human.vue'
 import Dev from '@/components/slides/Dev.vue'
 import Orga from '@/components/slides/Orga.vue'
 import Conclusion from '@/components/slides/Conclusion.vue'
+import Question from '@/components/slides/Question.vue'
 
 export default {
   name: "app",
@@ -85,8 +86,13 @@ export default {
           background: "background-white"
         },
         {
-          internalPage: 1,
+          internalPage: 4,
           component: Conclusion,
+          background: "background-primary"
+        },
+        {
+          internalPage: 1,
+          component: Question,
           background: "background-white"
         }
       ]
