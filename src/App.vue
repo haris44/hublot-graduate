@@ -14,9 +14,9 @@ import Company from "@/components/slides/Company.vue";
 import Product from '@/components/slides/Product.vue'
 import Target from '@/components/slides/Target.vue'
 import Summary from '@/components/slides/Summary.vue'
-import Human from '@/components/slides/Human.vue'
-import Dev from '@/components/slides/Dev.vue'
-import Orga from '@/components/slides/Orga.vue'
+import PartOne from '@/components/slides/PartOne.vue'
+import PartTwo from '@/components/slides/PartTwo.vue'
+import PartThree from '@/components/slides/PartThree.vue'
 import Conclusion from '@/components/slides/Conclusion.vue'
 import Question from '@/components/slides/Question.vue'
 
@@ -61,28 +61,23 @@ export default {
           internalPage: 1,
           component: Context,
           background: "background-white"
-        }
-        ,
+        },
         {
           charts: true,
-          internalPage: 10,
-          component: Human,
-          selected: 'human',
+          internalPage: 12,
+          component: PartOne,
           background: "background-white"
-        }
-        ,
+        },
         {
           charts: true,
-          internalPage: 10,
-          component: Orga,
-          selected: 'orga',
+          internalPage: 8,
+          component: PartTwo,
           background: "background-white"
         },
         {
           charts: true,
           internalPage: 10,
-          selected: 'dev',
-          component: Dev,
+          component: PartThree,
           background: "background-white"
         },
         {
@@ -115,9 +110,6 @@ export default {
     },
     right() {
       this.page = this.page + 1;
-    },
-    fullscreen() {
-      document.documentElement.webkitRequestFullscreen();
     }
   },
   computed: {

@@ -17,21 +17,22 @@ const chartsCore = {
       .tickSizeOuter(0)
       .tickPadding(10);
 
-    var svg = d3
+    const container = d3
       .select(selector)
       .attr("width", options.chartWidth)
       .attr("height", options.chartHeight)
-      .append('g');
+
+    const svg = container.append('g');
 
     const x = d3
       .scaleTime()
       .range([0, options.chartWidth])
       .domain(range);
 
-    return { x, y, svg }
+    return { x, y, svg, container }
   },
 
-  drawPaths(svg, rawData, chartWidth, x, y, color = 'red', opacity = 0.6, fn) {
+  drawPaths(svg, rawData, chartWidth, x, y, color = 'red', opacity = 0.6, fn, clip = "rect-clip") {
     const data = dataParser.parseData(rawData)
 
     const upperInnerArea = d3.area()
@@ -40,7 +41,7 @@ const chartsCore = {
       .y1(function (d) { return y(d.position / 1000 * chartWidth); })
       .curve(d3.curveMonotoneX)
 
-
+    console.log(clip)
     svg.append("text")
       .attr("x", () => x(data[0].date))
       .attr("y", () => y(data[0].size / 1000 * chartWidth) - 15)
@@ -48,7 +49,7 @@ const chartsCore = {
       .attr('text-anchor', 'middle')
       .attr('class', "charts-line-title")
       .text(() => rawData.text || "")
-      .attr('clip-path', 'url(#rect-clip)');
+      .attr('clip-path', 'url(#' + clip + ')');
 
     svg.datum(data);
 
@@ -57,7 +58,7 @@ const chartsCore = {
       .attr('class', color)
       .style('opacity', opacity)
       .on('click', fn)
-      .attr('clip-path', 'url(#rect-clip)');
+      .attr('clip-path', 'url(#' + clip + ')');
 
   },
   addMarker(marker, svg, chartHeight, x) {

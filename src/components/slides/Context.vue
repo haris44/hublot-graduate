@@ -5,7 +5,7 @@
     <div class="inline">
       <div class="human-part"> Ressources humaines</div>
       <div class="orga-part"> Organisation du projet</div>
-      <div class="tech-part">Aspect technique </div>
+      <div class="tech-part">Aspects techniques </div>
     </div>
   </div>
 </template>

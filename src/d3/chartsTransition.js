@@ -1,6 +1,12 @@
 import * as d3 from 'd3v4'
 
 export default {
+  changeHeight(svg, height) {
+    svg
+      .transition(d3.easeSin)
+      .duration(750)
+      .attr("height", height)
+  },
   focus(focusFeatures, otherFeatures) {
     otherFeatures.forEach(feature => {
       feature
@@ -58,6 +64,20 @@ export default {
       .transition()
       .delay(200)
       .duration(4000)
+      .attr('width', chartWidth);
+  },
+  prepareTransition(svg, options, clip, start = 0) {
+    return svg
+      .append("clipPath")
+      .attr("id", clip)
+      .append("rect")
+      .attr("width", start)
+      .attr("height", options.chartHeight)
+  },
+  startOnceTransition(chartWidth, clip) {
+    clip
+      .transition()
+      .duration(3000)
       .attr('width', chartWidth);
   }
 }

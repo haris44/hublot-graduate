@@ -3,7 +3,7 @@
     <video src="out.webm" width="100%" id="video-container" nocontrols autoplay></video>
     <br />
     <span class="animated bounceInDown delay-3s">
-      <b> Soutenance du mémoire de fin d'étude </b> <br />
+      <b @click="fullscreen"> Soutenance du mémoire de fin d'étude </b> <br />
       <i> Alexandre BERTRAND - 2019 </i>
     </span>
 
@@ -11,7 +11,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    fullscreen() {
+      document.documentElement.webkitRequestFullscreen();
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 @import "../../assets/animate";

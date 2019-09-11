@@ -11,23 +11,24 @@ export default {
   },
   createCircle(svg, date, x, svgHeight, text) {
     const xPosition = x(moment(date, 'YYYY-MM-DD').toDate())
+    const circle = svg
+      .append("circle")
+      .attr("cx", () => xPosition)
+      .attr("cy", () => svgHeight / 2)
+      .attr("r", () => 14)
+      .style("fill", () => "white")
+      .style("stroke", () => "#3e3e3e")
+      .style("stroke-width", 2)
+      .attr('clip-path', 'url(#rect-clip)');
     svg.append("text")
       .attr("x", () => xPosition)
-      .attr("y", () => svgHeight / 2 + 15)
-      .attr("dy", ".35em")
+      .attr("y", () => svgHeight / 2)
+      .attr("dy", ".25em")
       .attr('text-anchor', 'middle')
       .attr('class', "charts-point")
       .text(() => text || "")
       .attr('clip-path', 'url(#rect-clip)');
 
-    return svg
-      .append("circle")
-      .attr("cx", () => xPosition)
-      .attr("cy", () => svgHeight / 2)
-      .attr("r", () => 5)
-      .style("fill", () => "white")
-      .style("stroke", () => "#3e3e3e")
-      .style("stroke-width", 2)
-      .attr('clip-path', 'url(#rect-clip)');
+    return circle
   }
 }

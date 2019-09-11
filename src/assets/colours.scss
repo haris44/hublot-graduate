@@ -17,15 +17,22 @@ $human-7 : #FFD26B;
 // #F2C14E ? JAUNE 
 
 $orga-primary : #00876D;
-
 $orga-1 : #459E8C;
-$orga-2 : #8C0019;
-$orga-3: #F4869A;
-$orga-4 : #D11D3E;
-$orga-5 : #C6B281;
-$orga-6 : #C49935; 
-$orga-7 : #FFD26B;
 
+$commercial-primary: #f6bd60;
+
+.aspect-human {
+  color: $human-primary;
+}
+.aspect-tech {
+  color: $tech-primary;
+}
+.aspect-gestion {
+  color: $orga-primary;
+}
+.aspect-commerce{
+  color: $commercial-primary;
+}
 
 @mixin fillStroke($color) {
   fill:$color;
@@ -47,12 +54,7 @@ $orga-7 : #FFD26B;
 .human-7{ @include fillStroke($human-7); }
 
 
-
 .orga-primary{ @include fillStroke($orga-primary); } 
 .orga-1{ @include fillStroke($orga-1); }
-.orga-2{ @include fillStroke($orga-2); }
-.orga-3{ @include fillStroke($orga-3); }
-.orga-4{ @include fillStroke($orga-4); }
-.orga-5{ @include fillStroke($orga-5); }
-.orga-6{ @include fillStroke($orga-6); }
-.orga-7{ @include fillStroke($orga-7); }
+
+.commercial-primary{ @include fillStroke($commercial-primary); } 

@@ -16,9 +16,14 @@ import chartsTransition from '@/d3/chartsTransition'
 import devLines from "@/data/dev/main";
 import orgaLines from "@/data/orga/main";
 import humanLines from "@/data/human/main";
+import commercialLines from '@/data/commercial/main'
+
 import markers from "@/data/markers";
 import moment from "moment";
 import { PanBus } from '@/bus/PanBus';
+import { SubjectBus } from '@/bus/SubjectBus'
+import { HeightBus } from '@/bus/HeightBus'
+import { CommercialBus } from '@/bus/CommercialBus'
 
 export default {
   data() {
@@ -33,36 +38,35 @@ export default {
         chartHeight: 500
       },
       charts: {},
+      container: {},
       devs: [],
-      orgas: []
+      orgas: [],
+      commercials: [],
+      commercialClip : {}
     };
   },
-  props: ['selected', 'panning'],
+  props: ['panning'],
   watch: {
-    selected() {
-      if (this.selected === 'dev') {
-        this.dev()
-      }
-      else if (this.selected === 'orga') {
-        this.orga()
-      }
-      else if (this.selected === 'human') {
-        this.human()
-      } else {
-        this.reset()
-      }
-    },
     panning() {
       this.pan(this.panning, 200, 0)
     }
   },
   created() {
+    SubjectBus.$on('subject', subject => {
+      this.selected(subject)
+    });
     PanBus.$on('pan', pan => {
       this.pan(pan)
     });
+    HeightBus.$on('height', height => {
+      chartsTransition.changeHeight(this.container, height)
+    });
+    CommercialBus.$on('show', () => {
+      chartsTransition.startOnceTransition(this.options.chartWidth, this.commercialClip)
+    });
   },
   mounted() {
-    const { svg, x, y } = chartsCore.createCharts(
+    const { svg, x, y, container } = chartsCore.createCharts(
       "#charts",
       this.options,
       this.range
@@ -73,8 +77,6 @@ export default {
     chartsLine.createDashedLine(svg, "01/01/2017", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2018", x, chartHeight);
     chartsLine.createDashedLine(svg, "01/01/2019", x, chartHeight);
-
-
 
     const devFeatures = devLines.features.map((feature) => {
       return chartsCore.drawPaths(svg, feature, chartWidth, x, y, "tech-1", 0.8, this.dev);
@@ -88,13 +90,17 @@ export default {
       return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color || "human-1", 0.8, this.human);
     })
 
+  
     const orga = chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1, this.orga);
     const human = chartsCore.drawPaths(svg, humanLines.base, chartWidth, x, y, "human-primary", 1, this.human);
     const dev = chartsCore.drawPaths(svg, devLines.base, chartWidth, x, y, "tech-primary", 1, this.dev);
+    const commercial = chartsCore.drawPaths(svg, commercialLines.base,  chartWidth, x, y, "commercial-primary", 1, this.commercial, 'commercial-clip');
+     
 
     this.devs = [...devFeatures, dev]
     this.orgas = [...orgaFeatures, orga]
     this.humans = [...humanFeatures, human]
+    this.commercials = [commercial]
 
     chartsLine.createXAxis(svg, this.range, x, chartHeight);
     chartsText.createYearsText(svg, "01/01/2016", "31/12/2016", 2016, x, this.reset);
@@ -105,25 +111,43 @@ export default {
     markers.forEach(marker => {
       chartsPoint.createCircle(svg, marker.date, x, chartHeight, marker.text);
     })
-
+    this.commercialClip = chartsTransition.prepareTransition(svg, this.options, 'commercial-clip', chartWidth - 700)
     chartsTransition.startTransitions(chartWidth, svg, this.options);
     chartsTransition.createPan(svg, chartWidth, chartHeight)
     this.charts = svg;
+    this.container = container;
     // this.pan(2900, 0);
     this.pan(3050, 4000);
   },
   methods: {
+   
+    selected(selected) {
+      if (selected === 'dev') {
+        this.dev()
+      }
+      else if (selected === 'orga') {
+        this.orga()
+      }
+      else if (selected === 'human') {
+        this.human()
+      } else {
+        this.reset()
+      }
+       },
     dev() {
-      chartsTransition.focus(this.devs, [...this.orgas, ...this.humans])
+      chartsTransition.focus(this.devs, [...this.orgas, ...this.humans, ...this.commercials])
     },
     orga() {
-      chartsTransition.focus(this.orgas, [...this.devs, ...this.humans])
+      chartsTransition.focus(this.orgas, [...this.devs, ...this.humans, ...this.commercials])
     },
     human() {
-      chartsTransition.focus(this.humans, [...this.devs, ...this.orgas])
+      chartsTransition.focus(this.humans, [...this.devs, ...this.orgas, ...this.commercials])
+    },
+    commercial() {
+      chartsTransition.focus(this.commercials, [...this.devs, ...this.orgas, ...this.humans])
     },
     reset() {
-      chartsTransition.focus([...this.devs, ...this.orgas, ...this.humans], [])
+      chartsTransition.focus([...this.devs, ...this.orgas, ...this.humans, ...this.commercials], [])
     },
     pan(value = 900, duration = 2000, delay = 200) {
       chartsTransition.pan(this.charts, value, duration, delay)
@@ -150,6 +174,6 @@ export default {
 .charts-point {
   fill: #3e3e3e;
   font-family: roboto;
-  font-size: 12pt;
+  font-size: 8pt;
 }
 </style>

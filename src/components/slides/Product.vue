@@ -34,7 +34,7 @@
           <transition name="fade">
 
             <div class="right-text">
-              1 bouteille acheté = 1 bouteille vendue
+              1 bouteille achetée = 1 bouteille vendue
               <transition name="fade">
                 <ul v-if="liste">
                   <li> Produit très périssable <br /></li>
@@ -63,7 +63,7 @@
     </transition>
     <transition name="fade">
       <div v-if="manual && margeur" class="manual">
-        Impossibilité de mettre en places les commandes automatique
+        Impossibilité de mettre en place les commandes automatiques
       </div>
     </transition>
     <div v-if="etiquettes" class="schema-container">
@@ -81,7 +81,7 @@
     </div>
     <transition name="fade">
       <div v-if="amende && etiquettes" class="amende">
-        450€ d'amende par étiquettes fausses sur le rayon
+        450€ d'amende par étiquette fausse sur le rayon
       </div>
     </transition>
   </div>
@@ -90,61 +90,60 @@
 <script>
 export default {
   data() {
-    return {}
+    return {};
   },
   props: ["internal"],
   computed: {
     tablet() {
-      return this.internal === 1
+      return this.internal === 1;
     },
     smallLogo() {
-      return this.internal > 1 ? "small-logo" : ""
+      return this.internal > 1 ? "small-logo" : "";
     },
     etiquettesClass() {
-      return this.etiquettes ? "picto-grey" : ""
+      return this.etiquettes ? "picto-grey" : "";
     },
     margeurClass() {
-      return this.margeur ? "picto-grey" : ""
+      return this.margeur ? "picto-grey" : "";
     },
     etiquettes() {
-      return this.internal >= 9 && this.internal <= 12
+      return this.internal >= 9 && this.internal <= 12;
     },
     etiquettesSrc() {
       if (this.internal === 9) {
-        return "etiquette-1"
+        return "etiquette-1";
       } else if (this.internal >= 10) {
-        return "etiquette-2"
+        return "etiquette-2";
       } else {
-        return ''
+        return "";
       }
     },
     etiquetteTablet() {
-      return this.internal >= 11
+      return this.internal >= 11;
     },
     margeur() {
-      return this.internal >= 3 && this.internal <= 8
+      return this.internal >= 3 && this.internal <= 8;
     },
     margeur1() {
-      return this.internal >= 4
+      return this.internal >= 4;
     },
     margeur2() {
-      return this.internal >= 5
+      return this.internal >= 5;
     },
     margeur3() {
-      return this.internal >= 6
+      return this.internal >= 6;
     },
     manual() {
-      return this.internal >= 7
+      return this.internal >= 7;
     },
     amende() {
-      return this.internal >= 12
+      return this.internal >= 12;
     },
     liste() {
-      return this.internal >= 8
+      return this.internal >= 8;
     }
-
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
