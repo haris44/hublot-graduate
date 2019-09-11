@@ -3,48 +3,95 @@
     <div class="part-name">
       Première phase du projet
     </div>
-    <div class="center part-content" v-if="step1">
+    <div
+      class="center part-content"
+      v-if="step1"
+    >
       <b class="animated bounceInDown aspect-human">Aspect humain</b><br />
       <span class="animated bounceInDown">Une équipe jeune, qui entre en 3ème année d'EPSI</span><br />
-      <b class="animated bounceInDown" v-if="step2">Des connaissances limitées</b><br />
-      <b class="animated bounceInDown" v-if="step3">Nécessité d'avancer</b>
+      <b
+        class="animated bounceInDown"
+        v-if="step2"
+      >Des connaissances limitées</b><br />
+      <b
+        class="animated bounceInDown"
+        v-if="step3"
+      >Nécessité d'avancer</b>
     </div>
-    <div class="center part-content" v-if="step4">
+    <div
+      class="center part-content"
+      v-if="step4"
+    >
       <b class="animated bounceInDown aspect-tech">Aspects techniques</b><br />
-      <span class="animated bounceInDown" v-if="step5">Des besoins particuliers<br /></span>
-      <span v-if="step5" class="list">
+      <span
+        class="animated bounceInDown"
+        v-if="step5"
+      >Des besoins particuliers<br /></span>
+      <span
+        v-if="step5"
+        class="list"
+      >
         <b class="animated bounceInDown delay-250ms">Logiciel professionnel</b>
         <b class="animated bounceInDown delay-500ms">Sur tablette</b>
         <b class="animated bounceInDown delay-750ms">Indépendant</b>
         <b class="animated bounceInDown delay-1s">Simple</b>
         <b class="animated bounceInDown delay-1250ms">Complet</b>
-        <b class="animated bounceInDown delay-1500ms">Apports de connaissances</b>
+        <b class="animated bounceInDown delay-1500ms">Apport de connaissances</b>
         <br />
       </span>
-      <span class="animated bounceInDown" v-if="step6">Une architecture en conséquence <br /></span>
-      <transition name="fade"> <img class="archi fadeIn fadeout" :src="archiSrc" alt="" /> </transition>
-      <span class="animated bounceInDown" v-if="step11">Un choix technologique complexe</span><br />
-      <span v-if="step11" class="list">
+      <span
+        class="animated bounceInDown"
+        v-if="step6"
+      >Une architecture en conséquence <br /></span>
+      <transition name="fade"> <img
+          class="archi fadeIn fadeout"
+          :src="archiSrc"
+          alt=""
+        /> </transition>
+      <span
+        class="animated bounceInDown"
+        v-if="step11"
+      >Un choix technologique complexe</span><br />
+      <span
+        v-if="step11"
+        class="list"
+      >
         <span class="red-logo animated bounceInDown delay-250ms">
-          <img class=" logo" src="logo/java.png" alt="" /><br />
+          <img
+            class=" logo"
+            src="logo/java.png"
+            alt=""
+          /><br />
           Personnalisation complexe<br>
           Pas d'attirance<br>
-          Durée de vie limité<br>
+          Durée de vie limitée<br>
         </span>
         <span class="red-logo animated bounceInDown delay-500ms">
-          <img class="logo" src="logo/csharp.png" alt="" /><br />
+          <img
+            class="logo"
+            src="logo/csharp.png"
+            alt=""
+          /><br />
           Personnalisation complexe<br>
           Evolution incertaine<br>
           Peu d'attirance<br>
         </span>
         <span class="red-logo animated bounceInDown delay-750ms">
-          <img class="logo" src="logo/ionic.png" alt="" /><br />
+          <img
+            class="logo"
+            src="logo/ionic.png"
+            alt=""
+          /><br />
           Basé sur Angular<br>
-          Composants graphique très restrictif<br>
+          Composants graphiques très restrictifs<br>
           <span class="green">Technologie attrayante</span><br>
         </span>
         <span class="red-logo animated bounceInDown delay-1s">
-          <img class="logo" src="logo/cordova.png" alt="" /><br />
+          <img
+            class="logo"
+            src="logo/cordova.png"
+            alt=""
+          /><br />
           Peu de recul sur la technologie<br>
           <span class="green">
             Grande liberté graphique (CSS)<br>
@@ -52,10 +99,13 @@
         </span>
       </span>
     </div>
-    <div class="center part-content" v-if="step12">
+    <div
+      class="center part-content"
+      v-if="step12"
+    >
       <b class="animated bounceInDown aspect-gestion">Gestion de projet</b><br />
-      <span class="animated bounceInDown delay-500ms">Une gestion de projet laissé sur le coté</span><br />
-      <i class="animated bounceInDown delay-750ms">Dû à un manque de maturité de la part de l'équipe</i><br />
+      <span class="animated bounceInDown delay-500ms">Une gestion de projet laissée sur le coté</span><br />
+      <i class="animated bounceInDown delay-750ms">Due à un manque de maturité de la part de l'équipe</i><br />
     </div>
   </div>
 </template>

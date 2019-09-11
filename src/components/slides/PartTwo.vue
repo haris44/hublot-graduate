@@ -4,23 +4,45 @@
       Seconde phase
     </div>
 
-    <div class="center part-content" v-if="step1">
+    <div
+      class="center part-content"
+      v-if="step1"
+    >
       <b class="animated bounceInDown aspect-human">Ressources humaines</b><br />
       <span class="animated bounceInDown delay-500ms">Une entrée en I4 qui change la donne</span><br />
       <i class="animated bounceInDown delay-750ms">Mi-temps sur Hublot pour Alexandre</i><br />
     </div>
-    <div class="center part-content" v-if="step2">
+    <div
+      class="center part-content"
+      v-if="step2"
+    >
       <b class="animated bounceInDown aspect-tech">Aspects techniques</b><br />
-      <span class="animated bounceInDown" v-if="step3">Des principes mis en place très tôt <br /></span>
-      <span v-if="step4" class="list">
+      <span
+        class="animated bounceInDown"
+        v-if="step3"
+      >Des principes mis en place très tôt <br /></span>
+      <span
+        v-if="step4"
+        class="list"
+      >
         <b class="animated bounceInDown delay-250ms">Separations Of Concerns</b>
         <b class="animated bounceInDown delay-500ms">Layer d'indirection</b>
         <b class="animated bounceInDown delay-750ms">Single Source Of Truth</b>
       </span>
-      <span class="animated bounceInDown" v-if="step5">Une base de données complexe et des sources de données multiple <br /></span>
-      <transition name="fade"> <img class="archi fadeIn fadeout" :src="archiSrc" alt="" /> </transition><br />
+      <span
+        class="animated bounceInDown"
+        v-if="step5"
+      >Une base de données complexe et des sources de données multiples <br /></span>
+      <transition name="fade"> <img
+          class="archi fadeIn fadeout"
+          :src="archiSrc"
+          alt=""
+        /> </transition><br />
     </div>
-    <div class="center part-content" v-if="step8">
+    <div
+      class="center part-content"
+      v-if="step8"
+    >
       <b class="animated bounceInDown aspect-gestion">Gestion de projet</b><br />
       <span class="animated bounceInDown">Une tentative de mise en place de l'agile <br /></span>
       <i class="animated bounceInDown delay-750ms">Utilisation de Jira</i><br />

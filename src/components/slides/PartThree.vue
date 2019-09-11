@@ -3,10 +3,16 @@
     <div class="part-name">
       Dernière phase
     </div>
-    <div class="center part-content" v-if="step1">
+    <div
+      class="center part-content"
+      v-if="step1"
+    >
       <b class="animated bounceInDown aspect-human">Ressources humaines</b><br />
       <span class="animated bounceInDown">De nombreux changements donnant une nouvelle dimension au projet</span><br />
-      <span v-if="step3" class="list">
+      <span
+        v-if="step3"
+        class="list"
+      >
         <b class="animated bounceInDown delay-250ms">Hélène</b>
         <b class="animated bounceInDown delay-500ms">Clément</b>
         <b class="animated bounceInDown delay-750ms">Gwen</b>
@@ -14,21 +20,46 @@
         <b class="animated bounceInDown delay-1250ms">Paul</b>
       </span>
       <br />
-      <b class="animated bounceInDown fulltime" v-if="step4">Plein temps d'Alexandre à partir d'avril</b><br />
+      <b
+        class="animated bounceInDown fulltime"
+        v-if="step4"
+      >Plein temps d'Alexandre à partir d'avril</b><br />
     </div>
-    <div class="center part-content" v-if="step5">
+    <div
+      class="center part-content"
+      v-if="step5"
+    >
       <b class="animated bounceInDown aspect-tech">Aspects techniques</b><br />
       <span class="animated bounceInDown">Une refonte technique avec une refonte graphique</span><br />
-      <img src="schema/compare.png" v-if="step6" /><br />
-      <i v-if="step6" class="source">Source : https://www.stefankrause.net/js-frameworks-benchmark8/table.html</i>
+      <img
+        src="schema/compare.png"
+        v-if="step6"
+      /><br />
+      <i
+        v-if="step6"
+        class="source"
+      >Source : https://www.stefankrause.net/js-frameworks-benchmark8/table.html</i>
     </div>
-    <div class="center part-content" v-if="step7">
+    <div
+      class="center part-content"
+      v-if="step7"
+    >
       <b class="animated bounceInDown aspect-gestion">Gestion de projet</b><br />
       <span class="animated bounceInDown">Mise en place des méthodes agiles, de façon agile</span><br />
-      <img src="schema/scrum.jpg" height="400px" v-if="step8" /><br />
-      <i v-if="step8" class="source">Source : https://www.berkeleysquareit.com/how-agile-methodologies-can-work-for-you/</i>
+      <img
+        src="schema/scrum.jpg"
+        height="400px"
+        v-if="step8"
+      /><br />
+      <i
+        v-if="step8"
+        class="source"
+      >Source : https://www.berkeleysquareit.com/how-agile-methodologies-can-work-for-you/</i>
     </div>
-    <div class="center part-content" v-if="step10">
+    <div
+      class="center part-content"
+      v-if="step10"
+    >
       <b class="animated bounceInDown aspect-commerce">Prospection commerciale</b><br />
       <span class="animated bounceInDown">Mise sur le marché du produit</span><br />
     </div>

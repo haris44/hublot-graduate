@@ -2,7 +2,11 @@
   <div>
     <div class="background animated fadeIn">
       <div class="info">
-        Made with <span class="love">&#9829;</span> and <img src="logo/d3js.png" height="40px" alt="" /> <br />
+        Made with <span class="love">&#9829;</span> and <img
+          src="logo/d3js.png"
+          height="40px"
+          alt=""
+        /> <br />
         Copyright (c) 2019 - Présentation sous Licence BSD-3-Clause : <u>https://github.com/haris44/hublot-graduate</u>
       </div>
     </div>

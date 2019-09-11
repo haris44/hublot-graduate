@@ -7,7 +7,6 @@ import stage1 from './stage1';
 import stage2 from './stage2';
 import clement from './clement'
 import helene from './helene'
-import tempsplein from './tempsplein'
 
 export default {
   base: base,

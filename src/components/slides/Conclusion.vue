@@ -1,17 +1,42 @@
 <template>
   <div class="center">
     <div :class="logoClass">
-      <img width="100px" src="logo.png" class="logo" />
+      <img
+        width="100px"
+        src="logo.png"
+        class="logo"
+      />
       Hublot
     </div>
     <br />
-    <div v-if="step2" class="animated fadeIn subtitle-light"> Conclusion</div>
-    <div v-if="step3" class="animated fadeIn subject">Vue macro sur le projet</div>
-    <div v-if="step4" class="animated fadeIn subject">Un produit qui fonctionne, déployé en magasin</div>
-    <div v-if="step5" class="animated fadeIn subject">Un projet en plusieurs étapes</div>
-    <div v-if="step6" class="animated fadeIn subject">Une vision d'ensemble, de l'aspect financier jusqu'au développement, en passant par l'infra</div>
-    <div v-if="step7" class="animated fadeIn subject">Un projet professionnel sur le long terme</div><br /><br />
-    <b v-if="step8" class="animated fadeIn open">Une fillière passionnante, ou il reste beaucoup à faire</b>
+    <div
+      v-if="step2"
+      class="animated fadeIn subtitle-light"
+    > Conclusion</div>
+    <div
+      v-if="step3"
+      class="animated fadeIn subject"
+    >Vue macro sur le projet</div>
+    <div
+      v-if="step4"
+      class="animated fadeIn subject"
+    >Un produit qui fonctionne, déployé en magasin</div>
+    <div
+      v-if="step5"
+      class="animated fadeIn subject"
+    >Un projet en plusieurs étapes</div>
+    <div
+      v-if="step6"
+      class="animated fadeIn subject"
+    >Une vision d'ensemble, de l'aspect financier jusqu'au développement, en passant par l'infra</div>
+    <div
+      v-if="step7"
+      class="animated fadeIn subject"
+    >Un projet professionnel sur le long terme</div><br /><br />
+    <b
+      v-if="step8"
+      class="animated fadeIn open"
+    >Une filière passionnante, où il reste beaucoup à faire</b>
 
   </div>
 </template>

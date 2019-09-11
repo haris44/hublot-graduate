@@ -41,7 +41,6 @@ const chartsCore = {
       .y1(function (d) { return y(d.position / 1000 * chartWidth); })
       .curve(d3.curveMonotoneX)
 
-    console.log(clip)
     svg.append("text")
       .attr("x", () => x(data[0].date))
       .attr("y", () => y(data[0].size / 1000 * chartWidth) - 15)

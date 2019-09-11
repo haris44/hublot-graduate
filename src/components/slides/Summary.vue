@@ -1,13 +1,26 @@
 <template>
   <div class="center">
     <div :class="logoClass">
-      <img width="100px" src="logo.png" class="logo" />
+      <img
+        width="100px"
+        src="logo.png"
+        class="logo"
+      />
       Hublot
     </div>
     <br />
-    <div v-if="step2" class="animated fadeIn subtitle-light"> Problématique</div>
-    <div v-if="step3" class="animated fadeIn subject">Traduire les besoins et apporter une aide à la gestion d'un rayon poissonnerie pour un personnel peu-qualifié à travers une application mobile intuitive et adaptée au terrain </div>
-    <div v-if="step4" class="animated fadeIn subtitle-light"> Axe : Vision macro et chronologique du projet </div>
+    <div
+      v-if="step2"
+      class="animated fadeIn subtitle-light"
+    > Problématique</div>
+    <div
+      v-if="step3"
+      class="animated fadeIn subject"
+    >Traduire les besoins et apporter une aide à la gestion d'un rayon poissonnerie pour un personnel peu-qualifié à travers une application mobile intuitive et adaptée au terrain </div>
+    <div
+      v-if="step4"
+      class="animated fadeIn subtitle-light"
+    > Axe : Vision macro et chronologique du projet </div>
   </div>
 </template>
 
