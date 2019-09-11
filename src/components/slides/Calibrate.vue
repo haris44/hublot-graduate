@@ -21,9 +21,10 @@ export default {
 </script>
 <style lang="scss">
 .calibrate {
-  background-color: lightgreen;
+  background-color: lightblue;
   text-align: center;
-  height: 950px;
+  height: 930px;
   width: 1900px;
+  border: 10px solid #376375;
 }
 </style>

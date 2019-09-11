@@ -30,7 +30,7 @@ export default {
           component: Calibrate,
           charts: false,
           internalPage: 1,
-          background: "background-primary"
+          background: "background-white"
         },
         {
           component: Intro,
@@ -76,7 +76,7 @@ export default {
         },
         {
           charts: true,
-          internalPage: 8,
+          internalPage: 6,
           component: PartTwo,
           background: "background-white"
         },
