@@ -1,0 +1,39 @@
+image: hublo/alpine-kaniko
+
+stages:
+  - build
+  - release
+  - deploy
+
+variables:
+  NAMESPACE: website
+  DOCKER_DRIVER: overlay
+  DEPLOYMENT: hublot-graduate
+  TEST_IMAGE: registry.gitlab.hublot.io/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_SHA
+  RELEASE_IMAGE: registry.gitlab.hublot.io/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_SHA
+
+._: &docker_login
+  before_script:
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - echo "$(</kaniko/.docker/config.json)"
+
+build:
+  <<: *docker_login
+  stage: build
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $TEST_IMAGE
+
+release:
+  <<: *docker_login
+  stage: release
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $RELEASE_IMAGE
+
+deploy:
+  stage: deploy
+  image: hublo/kubectl:latest
+  script:
+    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+    - kubectl set image deployments/$DEPLOYMENT $DEPLOYMENT=$RELEASE_IMAGE --namespace=$NAMESPACE
+  only:
+    - master
