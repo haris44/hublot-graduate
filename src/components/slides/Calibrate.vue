@@ -10,13 +10,10 @@
 <script>
 export default {
   data(){
-    return {
-
-    }
+    return {}
   },
   methods:{
     fullscreen() {
-       
         document.documentElement.requestFullscreen();
       }
   }
