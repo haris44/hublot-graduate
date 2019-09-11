@@ -11,8 +11,17 @@
 </template>
 
 <script>
-export default {
+import { PanBus } from '@/bus/PanBus';
 
+export default {
+  props : ['internal'],
+  watch:{
+    internal(){
+      if(this.internal === 2){
+      PanBus.$emit("pan", 0);
+      }
+    }
+  }
 }
 </script>
 

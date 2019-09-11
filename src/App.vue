@@ -19,13 +19,19 @@ import PartTwo from '@/components/slides/PartTwo.vue'
 import PartThree from '@/components/slides/PartThree.vue'
 import Conclusion from '@/components/slides/Conclusion.vue'
 import Question from '@/components/slides/Question.vue'
-
+import Calibrate from '@/components/slides/Calibrate.vue'
 export default {
   name: "app",
   data() {
     return {
       page: 1,
       pages: [
+        {
+          component: Calibrate,
+          charts: false,
+          internalPage: 1,
+          background: "background-primary"
+        },
         {
           component: Intro,
           charts: false,
@@ -35,7 +41,7 @@ export default {
         {
           component: Company,
           charts: false,
-          internalPage: 2,
+          internalPage: 3,
           background: "background-primary"
         },
         {
@@ -58,7 +64,7 @@ export default {
         },
         {
           charts: true,
-          internalPage: 1,
+          internalPage: 2,
           component: Context,
           background: "background-white"
         },
@@ -81,7 +87,7 @@ export default {
           background: "background-white"
         },
         {
-          internalPage: 4,
+          internalPage: 8,
           component: Conclusion,
           background: "background-primary"
         },
@@ -100,8 +106,8 @@ export default {
   },
   mounted() {
     document.addEventListener("keyup", e => {
-      if (e.code === "ArrowLeft") this.left();
-      else if (e.code === "ArrowRight") this.right();
+      if (e.code === "ArrowLeft" || e.code === "PageUp") this.left();
+      else if (e.code === "ArrowRight"|| e.code === "PageDown") this.right();
     });
   },
   methods: {

@@ -6,12 +6,14 @@
     </div>
     <br />
     <span class="animated fadeIn subtitle-light"> Qui sommes-nous ?</span>
+    <div class="list-space">
+      <img src="actionnaires/dominique.png" class="pictures" alt=''>
+      <img src="actionnaires/clement.png" class="pictures" alt=''>
+      <img src="actionnaires/nathan.png" class="pictures" alt=''>
+      <img src="actionnaires/alexandre.png" class="pictures" alt=''>
+    </div>
     <br />
-    <div class="inline">
-      <span class="keynumber">
-        <ICountUp class="key" :delay="100" :endVal="4" :options="options" />
-        <span class="title">Actionnaires</span>
-      </span>
+    <div v-if="step2" class="list-space">
       <span class="keynumber">
         <ICountUp class="key" :delay="100" :endVal="2016" :options="options" />
         <span class="title">Démarrage du dev'</span>
@@ -21,12 +23,16 @@
         <span class="title">Création de l'entreprise</span>
       </span>
       <span class="keynumber">
-        <ICountUp class="key" :delay="100" :endVal="2" :options="options" />
+        <ICountUp class="key" :delay="100" :endVal="15" :options="options" />
+        <span class="title">Outils</span>
+      </span>
+      <span class="keynumber">
+        <ICountUp class="key" :delay="100" :endVal="3" :options="options" />
         <span class="title">Magasins test</span>
       </span>
     </div>
 
-    <span :class="step2">
+    <span v-if="step3">
       <div class="objectif animated bounceInDown">
         Objectif : Simplifier la vie du chef de rayon de votre poissonnerie
       </div>
@@ -52,11 +58,10 @@ export default {
   },
   computed: {
     step2() {
-      if (this.internal === 2) {
-        return "show";
-      } else {
-        return "none";
-      }
+      return this.internal >= 2
+    },
+     step3() {
+      return this.internal >= 3
     }
   }
 };
@@ -65,4 +70,16 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/animate";
 @import "../../assets/slides";
+
+.list-space {
+  display: flex;
+  margin-top: 3%;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.pictures {
+  height: 180px;
+}
 </style>
+

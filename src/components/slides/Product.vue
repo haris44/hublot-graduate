@@ -74,14 +74,13 @@
       </transition>
       <div class="right-schema">
         <transition name="fade">
-          <img v-if="etiquetteTablet" src="mockup/visuel-tablette-etiquette.png" width="90%" alt="" />
+          <img v-if="amende && etiquettes" src="mockup/visuel-tablette-etiquette.png" width="90%" alt="" />
         </transition>
       </div>
-
     </div>
     <transition name="fade">
-      <div v-if="amende && etiquettes" class="amende">
-        450€ d'amende par étiquette fausse sur le rayon
+      <div v-if="etiquetteTablet" class="amende">
+        de 450€ à 750€ d'amende par étiquette fausse sur le rayon
       </div>
     </transition>
   </div>

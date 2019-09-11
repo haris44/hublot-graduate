@@ -89,14 +89,12 @@ export default {
     const humanFeatures = humanLines.features.map((feature) => {
       return chartsCore.drawPaths(svg, feature, chartWidth, x, y, feature.color || "human-1", 0.8, this.human);
     })
-
   
     const orga = chartsCore.drawPaths(svg, orgaLines.base, chartWidth, x, y, "orga-primary", 1, this.orga);
     const human = chartsCore.drawPaths(svg, humanLines.base, chartWidth, x, y, "human-primary", 1, this.human);
     const dev = chartsCore.drawPaths(svg, devLines.base, chartWidth, x, y, "tech-primary", 1, this.dev);
     const commercial = chartsCore.drawPaths(svg, commercialLines.base,  chartWidth, x, y, "commercial-primary", 1, this.commercial, 'commercial-clip');
      
-
     this.devs = [...devFeatures, dev]
     this.orgas = [...orgaFeatures, orga]
     this.humans = [...humanFeatures, human]
